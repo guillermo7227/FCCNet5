@@ -1,0 +1,23 @@
+@model FCCNet5.Models.ApplicationType
+
+@{
+    ViewData["Title"] = "Edit Application Type";
+}
+
+<h1 class="text-primary mb-5">@ViewData["Title"]</h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary"><span class="mdi mdi-content-save"></span> Update</button>
+    <a asp-action="Index" class="btn btn-secondary"><i class="mdi mdi-arrow-left"></i> Back</a>
+</form>
+
+@section Scripts {
+    @{ <partial name="_ValidationScriptsPartial"></partial> }
+}

@@ -1,0 +1,45 @@
+@model IEnumerable<FCCNet5.Models.ApplicationType>
+
+@{
+    ViewData["Title"] = "Application Types";
+}
+
+<div class="row mb-5">
+    <div class="col-6">
+        <h1 class="text-primary">@ViewData["Title"]</h1>
+    </div>
+    <div class="col-6 text-right">
+        <a class="btn btn-primary" asp-action="Create">Create Application Type</a>
+    </div>
+</div>
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Application Type Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Name</td>
+                    <td class="d-flex justify-content-end">
+                        <a asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-info mr-2"><span class="mdi mdi-pencil"></span></a>
+                        <form asp-action="Delete" method="post">
+                            <input hidden name="Id" value="@obj.Id">
+                            <button class="btn btn-danger"><span class="mdi mdi-delete"></span></button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No Application Types to show</p>
+}
